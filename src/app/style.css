@@ -834,3 +834,139 @@ footer {
     font-size: 8px;
   }
 }
+
+/* --- service commitments --- */
+.ticket.committed {
+  border-top-color: #7c9a68;
+}
+.ticket.partial {
+  border-top-color: #c19a5b;
+  background: #fffaf0;
+}
+.mode-chip {
+  color: #6a8459;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.mode-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px;
+}
+.mode-button {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  background: #f2f4e9;
+  color: #46603f;
+  border: 1px solid #dfe5d2;
+  padding: 7px 8px;
+  text-align: left;
+}
+.mode-button b {
+  font-size: 10px;
+  white-space: nowrap;
+}
+.mode-button small {
+  font-size: 8px;
+  color: #8a9a7c;
+  text-align: right;
+}
+.mode-button:disabled {
+  opacity: 0.45;
+}
+.ticket-hint {
+  font-size: 8px;
+  color: #9aa38f;
+  margin-top: 7px;
+  line-height: 1.5;
+}
+.commit-grid {
+  display: flex;
+  gap: 7px;
+  margin-top: 10px;
+}
+.commit-grid > div {
+  flex: 1;
+  background: #f4f5ec;
+  border-radius: 5px;
+  padding: 6px 7px;
+}
+.commit-grid small {
+  display: block;
+  font-size: 8px;
+  color: #97a08c;
+  margin-bottom: 3px;
+}
+.commit-grid b {
+  font: 15px Georgia;
+  color: #4d6544;
+}
+.commit-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  font-size: 8px;
+  color: #8d9b7e;
+  margin-top: 7px;
+  line-height: 1.6;
+}
+.commit-meta .paid {
+  color: #b98257;
+}
+.patience.dual {
+  margin: 9px 0;
+}
+.ticket-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.ticket-actions > button {
+  flex: 1 1 45%;
+  width: auto;
+}
+.ticket-actions > button:first-child {
+  flex-basis: 100%;
+}
+.abandon {
+  background: #f6ece4;
+  color: #a66a4a;
+}
+.target-line {
+  display: block;
+  margin-top: 4px;
+  color: #7c8d70;
+}
+.patience.pending {
+  margin: 10px 0;
+}
+.wait-chip {
+  color: #829077;
+}
+.sub-loss {
+  display: block;
+  margin-top: 5px;
+  font-size: 8px;
+  color: #b99a80;
+}
+.commit-history {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px dashed #e2e3d8;
+}
+.history-item {
+  font-size: 8px;
+  color: #8c9881;
+}
+.ext-note {
+  margin-top: 3px !important;
+  margin-bottom: 0 !important;
+  color: #b08a63 !important;
+}

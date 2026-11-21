@@ -16,6 +16,7 @@ export function createGame(best = 0): Game {
         arrived: 0,
         deadline: 65,
         status: "waiting",
+        commitment: null,
       },
       {
         id: 2,
@@ -24,6 +25,7 @@ export function createGame(best = 0): Game {
         arrived: 0,
         deadline: 75,
         status: "waiting",
+        commitment: null,
       },
       {
         id: 3,
@@ -32,6 +34,7 @@ export function createGame(best = 0): Game {
         arrived: 0,
         deadline: 55,
         status: "waiting",
+        commitment: null,
       },
     ],
     stock: { beef: 5, noodle: 5, greens: 6 },

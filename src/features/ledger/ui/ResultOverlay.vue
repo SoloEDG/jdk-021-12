@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Game } from "../../../shared/types";
-import { totals, grade } from "../lib/totals";
+import { settlement, totals, grade } from "../lib/totals";
 defineProps<{ game: Game }>();
 defineEmits<{ restart: [] }>();
 </script>
@@ -13,7 +13,11 @@ defineEmits<{ restart: [] }>();
       <p>
         本场净收益 <b>¥{{ totals(game).net }}</b>
       </p>
-      <p>完成 {{ game.served }} 单 · 离店 {{ game.missed }} 位</p>
+      <p>
+        完成 {{ game.served }} 单 · 离店 {{ game.missed }} 位 · 补偿
+        ¥{{ totals(game).compensation }} · 退款 ¥{{ totals(game).refunds }} ·
+        延期折扣 ¥{{ totals(game).discounts }}
+      </p>
       <button @click="$emit('restart')">再开一家好餐厅 ↗</button>
     </section>
   </div>

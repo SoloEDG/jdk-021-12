@@ -1,5 +1,5 @@
 import type { Game, Command } from "../shared/types";
-import { accept, expire } from "../features/orders";
+import { accept, abandon, expire, extend } from "../features/orders";
 import { prepare, restock } from "../features/pantry";
 import { cook, lift } from "../features/kitchen";
 import { plate, discard, deliver } from "../features/service";
@@ -10,10 +10,23 @@ export function dispatch(g: Game, c: Command) {
   }
   switch (c.type) {
     case "accept":
-      accept(g, c.id);
+      accept(g, c.id, c.mode);
+      expire(g);
+      break;
+    case "extend":
+      extend(g, c.id);
+      break;
+    case "abandon":
+      abandon(g, c.id);
       break;
     case "select-order":
-      if (g.orders.some((o) => o.id === c.id && o.status === "accepted"))
+      if (
+        g.orders.some(
+          (o) =>
+            o.id === c.id &&
+            (o.status === "accepted" || o.status === "partial"),
+        )
+      )
         g.selectedOrder = c.id;
       break;
     case "prepare":

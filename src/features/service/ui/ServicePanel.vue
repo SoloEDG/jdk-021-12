@@ -2,6 +2,13 @@
 import type { Game, Command } from "../../../shared/types";
 import { recipes } from "../../../shared/catalog";
 import { servingQuality, servicePair } from "../lib/freshness";
+import {
+  compensationLabel,
+  remainingValue,
+  undeliveredItems,
+  itemProgress,
+} from "../../orders/lib/commitment";
+import { promiseWait } from "../../orders/lib/patience";
 defineProps<{ game: Game }>();
 defineEmits<{ command: [cmd: Command] }>();
 </script>
@@ -49,10 +56,23 @@ defineEmits<{ command: [cmd: Command] }>();
     </div>
     <div class="delivery-target">
       上菜目标：<b>{{ servicePair(game).order?.guest || "尚未选择订单" }}</b>
+      <template v-if="servicePair(game).order?.commitment">
+        <span class="target-line">
+          承诺截止 {{ promiseWait(game, servicePair(game).order!) }}s ·
+          {{ itemProgress(servicePair(game).order!) }} · 待上
+          {{ undeliveredItems(servicePair(game).order!.commitment!).length }}
+          份 · {{ compensationLabel(servicePair(game).order!) }}
+        </span>
+        <span class="target-line">
+          未完成部分价值 ¥{{ remainingValue(servicePair(game).order!.commitment!) }}
+        </span>
+      </template>
     </div>
     <button class="serve-button" @click="$emit('command', { type: 'serve' })">
       上菜 <span>↗</span>
     </button>
-    <p class="muted">错配扣10秒耐心 · 起锅15秒后开始失温</p>
+    <p class="muted">
+      错配扣10秒耐心 · 起锅15秒后开始失温 · 分次安抚只推迟离店，不会让失温的菜回温
+    </p>
   </section>
 </template>

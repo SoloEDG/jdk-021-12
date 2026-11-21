@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Game } from "../../../shared/types";
-import { totals } from "../lib/totals";
+import { settlement, totals } from "../lib/totals";
 defineProps<{ game: Game }>();
 </script>
 <template>
@@ -20,6 +20,13 @@ defineProps<{ game: Game }>();
       ><b
         >{{ game.served }} <span class="muted">/ {{ game.missed }}</span></b
       >
+    </div>
+    <div class="ledger-stat">
+      <small>退款 / 补偿</small>
+      <b class="red">−¥{{ settlement(game).refundsAndCompensation }}</b>
+      <small v-if="settlement(game).discounts" class="sub-loss">
+        延期折扣 −¥{{ settlement(game).discounts }}
+      </small>
     </div>
     <div class="ledger-stat">
       <small>历史最佳</small><b>¥{{ game.best }}</b>
